@@ -1,0 +1,4 @@
+#! /bin/zsh
+
+tcb hosting delete index.html -e singfor-live-9gizzbuc59a85fe6
+tcb hosting deploy index.html index.html -e singfor-live-9gizzbuc59a85fe6
