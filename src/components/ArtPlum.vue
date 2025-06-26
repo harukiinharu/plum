@@ -1,4 +1,6 @@
-<script setup lang='ts'>
+<script setup lang="ts">
+import { computed, ref, reactive, onMounted } from 'vue'
+import { useWindowSize, useRafFn} from '@vueuse/core'
 import type { Fn } from '@vueuse/core'
 
 const r180 = Math.PI

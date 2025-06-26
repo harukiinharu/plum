@@ -4,10 +4,8 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import Markdown from 'unplugin-vue-markdown/vite'
 import Vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
 import UnoCSS from 'unocss/vite'
 import VueRouter from 'unplugin-vue-router/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 export default defineConfig({
   base: './',
@@ -39,7 +37,7 @@ export default defineConfig({
 
     Markdown({
       wrapperComponent: id => 'WrapperPost',
-      wrapperClasses: (id, code) => (code.includes('@layout-full-width') ? '' : 'prose m-auto slide-enter-content'),
+      wrapperClasses: (id, code) => 'prose m-auto slide-enter-content',
       headEnabled: true,
       exportFrontmatter: false,
       exposeFrontmatter: false,
@@ -47,10 +45,6 @@ export default defineConfig({
       markdownItOptions: {
         quotes: '""\'\'',
       },
-    }),
-
-    AutoImport({
-      imports: ['vue', VueRouterAutoImports, '@vueuse/core'],
     }),
 
     Components({

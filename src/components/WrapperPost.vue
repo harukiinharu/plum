@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed, defineAsyncComponent } from 'vue'
 const { frontmatter } = defineProps({
   frontmatter: {
     type: Object,
