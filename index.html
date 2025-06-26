@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,12 +11,13 @@
     <title>春木Haruki</title>
     <script>
       ;(function () {
-        const prefersDark =
-          window.matchMedia &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches
-        const setting = localStorage.getItem('vueuse-color-scheme') || 'auto'
-        if (setting === 'dark' || (prefersDark && setting !== 'light'))
-          document.documentElement.classList.toggle('dark', true)
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+        if (mediaQuery.matches) document.documentElement.classList.add('dark')
+        const handleChange = e => {
+          if (e.matches) document.documentElement.classList.add('dark')
+          else document.documentElement.classList.remove('dark')
+        }
+        mediaQuery.addEventListener('change', handleChange)
       })()
     </script>
   </head>
