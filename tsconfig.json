@@ -1,23 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "jsx": "preserve",
-    "lib": ["DOM", "ESNext"],
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ES2021", "ES2021.Promise"],
     "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
     "paths": {
-      "~/*": ["src/*"]
-    },
-    "resolveJsonModule": true,
-    "types": [
-      "vite/client",
-      "unplugin-vue-router/client"
-    ],
-    "strict": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+      "@/*": ["./src/*"]
+    }
   },
-  "exclude": ["dist", "node_modules"]
+  "include": ["src"]
 }
