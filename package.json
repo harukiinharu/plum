@@ -5,14 +5,7 @@
     "p": "pnpx http-server dist -a 127.0.0.1 -p 5173"
   },
   "dependencies": {
-    "@vueuse/core": "^10.11.1",
-    "dayjs": "^1.11.13",
-    "floating-vue": "^5.2.2",
-    "nprogress": "^0.2.0",
-    "shiki-magic-move": "^0.4.5",
-    "vue": "^3.5.17",
-    "vue-router": "^4.5.1",
-    "vue-router-better-scroller": "^0.0.0"
+    "vue": "^3.5.17"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.352",

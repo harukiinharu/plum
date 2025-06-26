@@ -2,6 +2,5 @@ node_modules
 .DS_Store
 .vscode
 dist
-.vite-ssg-temp
 components.d.ts
 auto-imports.d.ts
