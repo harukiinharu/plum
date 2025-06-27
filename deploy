@@ -2,7 +2,6 @@
 
 bun b
 
-tcb hosting delete --dir .vite/ -e singfor-live-9gizzbuc59a85fe6
 tcb hosting delete --dir assets -e singfor-live-9gizzbuc59a85fe6
 tcb hosting delete favicon.svg -e singfor-live-9gizzbuc59a85fe6
 tcb hosting delete index.html -e singfor-live-9gizzbuc59a85fe6
