@@ -1,11 +1,12 @@
-import { useRef, useEffect, useCallback, useMemo, useState } from 'react'
+import { useRef, useEffect, useCallback, useState } from 'react'
 
 const r180 = Math.PI
 const r90 = Math.PI / 2
 const r15 = Math.PI / 12
-const color = '#6ee36a25'
-const MIN_BRANCH = 30
-const LEN = 6
+const WIDTH = 1
+const COLOR = '#6ee36a25'
+const MIN_BRANCH = 100
+const LEN = 8
 
 function polar2cart(x = 0, y = 0, r = 0, theta = 0) {
   const dx = r * Math.cos(theta)
@@ -26,30 +27,25 @@ function useWindowSize() {
 const App: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const animationRef = useRef<number | null>(null)
-  const [stopped, setStopped] = useState(false)
   const size = useWindowSize()
 
   // Helper to get device pixel ratio
-  const initCanvas = useCallback((canvas: HTMLCanvasElement, width: number, height: number, _dpi?: number) => {
+  const initCanvas = useCallback((canvas: HTMLCanvasElement, width: number, height: number) => {
     const ctx = canvas.getContext('2d')!
-    const dpr = window.devicePixelRatio || 1
-    // @ts-expect-error vendor
-    const bsr = ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio ||
-      1
-    const dpi = _dpi || dpr / bsr
+    const dpi = window.devicePixelRatio
     canvas.style.width = `${width}px`
     canvas.style.height = `${height}px`
     canvas.width = dpi * width
     canvas.height = dpi * height
     ctx.setTransform(1, 0, 0, 1, 0, 0) // reset transform
     ctx.scale(dpi, dpi)
-    return { ctx, dpi }
+    return ctx
   }, [])
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-    const { ctx } = initCanvas(canvas, size.width, size.height)
+    const ctx = initCanvas(canvas, size.width, size.height)
     let steps: (() => void)[] = []
     let prevSteps: (() => void)[] = []
     let stoppedFlag = false
@@ -77,8 +73,8 @@ const App: React.FC = () => {
 
     function start() {
       ctx.clearRect(0, 0, size.width, size.height)
-      ctx.lineWidth = 1
-      ctx.strokeStyle = color
+      ctx.lineWidth = WIDTH
+      ctx.strokeStyle = COLOR
       prevSteps = []
       steps = [
         () => step(randomMiddle() * size.width, -5, r90),
@@ -87,7 +83,6 @@ const App: React.FC = () => {
         () => step(size.width + 5, randomMiddle() * size.height, r180),
       ]
       if (size.width < 500) steps = steps.slice(0, 2)
-      setStopped(false)
       stoppedFlag = false
       animate()
     }
@@ -100,7 +95,6 @@ const App: React.FC = () => {
       prevSteps = steps
       steps = []
       if (!prevSteps.length) {
-        setStopped(true)
         stoppedFlag = true
         return
       }
@@ -118,13 +112,8 @@ const App: React.FC = () => {
     // eslint-disable-next-line
   }, [size.width, size.height, initCanvas])
 
-  const mask = useMemo(() => 'radial-gradient(circle, transparent, black)', [])
-
   return (
-    <div
-      className='fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden'
-      style={{ zIndex: -1, maskImage: mask, WebkitMaskImage: mask }}
-    >
+    <div className='fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden'>
       <canvas ref={canvasRef} width={size.width} height={size.height} />
     </div>
   )
