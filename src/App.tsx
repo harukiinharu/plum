@@ -28,7 +28,7 @@ const App: React.FC = () => {
               speed={80}
               highlightStart={6}
               highlightHref={'https://harukiinharu.vercel.app'}
-              highlightClassName={'hover:underline text-[#6ee36aad]'}
+              highlightClassName={'hover:underline text-[#6ee36add]'}
             />
           </span>
         </h1>
