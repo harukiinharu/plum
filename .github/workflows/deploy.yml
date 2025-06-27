@@ -21,19 +21,19 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
       - name: Install bun
         id: bun-install
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-
-      - name: Setup bun cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.bun/install/cache
-          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.bun }}-bun-
 
       - name: Install dependencies
         run: bun i
