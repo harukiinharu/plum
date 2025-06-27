@@ -12,7 +12,12 @@ const App: React.FC = () => {
         <h1 className='text-4xl slide-enter'>
           <span>
             <span
-              className='cursor-pointer'
+              onClick={() => {
+                if (!typedOnce) {
+                  setTyping(true)
+                  setTypedOnce(true)
+                }
+              }}
               onMouseEnter={() => {
                 if (!typedOnce) {
                   setTyping(true)
