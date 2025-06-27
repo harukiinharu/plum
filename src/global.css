@@ -122,22 +122,18 @@
   }
 }
 
-/* 向上弹出动画 */
-@keyframes bounce-up {
+@keyframes slide-enter {
   0% {
-    transform: translateY(30px);
+    transform: translateY(10px);
     opacity: 0;
   }
-  50% {
-    transform: translateY(10px);
-    opacity: 0.3;
-  }
-  100% {
+
+  to {
     transform: translateY(0);
     opacity: 1;
   }
 }
 
-.animate-bounce-up {
-  animation: bounce-up 0.8s ease-out forwards;
+.slide-enter {
+  animation: slide-enter 1s both 1;
 }
