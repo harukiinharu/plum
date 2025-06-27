@@ -30,7 +30,6 @@ jobs:
             ${{ runner.os }}-bun-
 
       - name: Install bun
-        id: bun-install
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
