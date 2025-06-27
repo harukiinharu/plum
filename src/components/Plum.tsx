@@ -6,7 +6,7 @@ const r15 = Math.PI / 12
 const WIDTH = 1
 const COLOR = '#6ee36a25'
 const MIN_BRANCH = 100
-const LEN = 8
+const LEN = 7
 
 function polar2cart(x = 0, y = 0, r = 0, theta = 0) {
   const dx = r * Math.cos(theta)
