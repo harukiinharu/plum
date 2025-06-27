@@ -32,7 +32,7 @@ const App: React.FC = () => {
               trigger={typing}
               speed={80}
               highlightStart={6}
-              highlightHref={'https://harukiinharu.vercel.app'}
+              highlightHref={'https://harukiinharu.github.io'}
               highlightClassName={'hover:underline text-[#6ee36add]'}
             />
           </span>
