@@ -1,3 +1,3 @@
-https://github.com/user-attachments/assets/551add6c-a1a8-4e37-b3a6-fea20557b7c7
+https://github.com/user-attachments/assets/3b6a14f8-f561-485e-81a7-d4a119f8b8a8
 
 灵感来源自 [plum-demo](https://github.com/antfu/plum-demo)
